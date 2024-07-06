@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Funkin Packer v0.1.3 https://neeeoo.github.io/funkin-packer/
+-->
+<TextureAtlas imagePath="buttons.png" width="1043" height="63">
+	<SubTexture name="options_i" x="523" y="1" width="171" height="60" frameX="-0" frameY="-0" frameWidth="171" frameHeight="60"/>
+	<SubTexture name="options_s" x="697" y="1" width="171" height="60" frameX="-0" frameY="-0" frameWidth="171" frameHeight="60"/>
+	<SubTexture name="start_i" x="871" y="1" width="171" height="60" frameX="-0" frameY="-0" frameWidth="171" frameHeight="60"/>
+	<SubTexture name="start_s" x="175" y="1" width="171" height="61" frameX="-0" frameY="-0" frameWidth="171" frameHeight="61"/>
+	<SubTexture name="mods_s" x="1" y="1" width="171" height="61" frameX="-0" frameY="-0" frameWidth="171" frameHeight="61"/>
+	<SubTexture name="mods_i" x="349" y="1" width="171" height="60" frameX="-0" frameY="-0" frameWidth="171" frameHeight="61"/>
+</TextureAtlas>
