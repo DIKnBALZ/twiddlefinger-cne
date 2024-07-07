@@ -1,5 +1,6 @@
 // HELP = 👍
 
+import funkin.editors.EditorPicker;
 import funkin.options.OptionsMenu;
 import funkin.menus.ModSwitchMenu;
 
@@ -8,6 +9,7 @@ var buttonList:Array<FunkinSprite> = [];
 var buttons:FunkinSprite;
 
 var curSelected:Int = 0;
+var playMode:String = 'normal';
 
 function create() {
 	CoolUtil.playMenuSong();
@@ -63,17 +65,33 @@ function select(button:FunkinSprite) {
 
 function update(elapsed:Float) {
 	for (button in buttonList)
-		if (FlxG.mouse.overlaps(button))
+		if (FlxG.mouse.overlaps(button)) {
 			select(button);
+			if (FlxG.mouse.justPressed) accept();
+		}
 
 	if (controls.LEFT_P || controls.RIGHT_P)
 		select(buttonList[FlxMath.wrap(curSelected+(controls.LEFT_P ? -1 : 1), 0, optionList.length-1)]);
 
-	if (controls.ACCEPT || FlxG.mouse.justPressed) switch optionList[curSelected] {
-		case 'start': trace('ok');
+	if (controls.ACCEPT) accept(); 
+
+	if (FlxG.keys.justPressed.SEVEN) {
+		persistentUpdate = false;
+		openSubState(new EditorPicker());
+	}
+}
+
+function accept() {
+	switch optionList[curSelected] {
+		case 'start': play();
 		case 'options': FlxG.switchState(new OptionsMenu());
 		case 'mods':
 			persistentUpdate = false;
 			openSubState(new ModSwitchMenu());
 	}
+}
+
+function play() {
+	PlayState.loadSong("twiddlefinger", "twiddlefinger", playMode == 'opponent', playMode == 'coop');
+	FlxG.switchState(new PlayState());
 }
